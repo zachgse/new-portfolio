@@ -1,23 +1,20 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import Card from "@/components/reusable/Card";
 import AchievementContent from "@/components/features/Achievement/AchievementContent";
-import { createClient } from "@/supabase/server";
+import AchievementSkeleton from "@/components/skeleton/AchievementSkeleton";
 
 export const metadata: Metadata = {
     title: "Zach Estrella | Achievements",
     description: "Achievement section of Zach's Portfolio",
 }; 
 
-export const revalidate = 300;
-
-const Achievement = async() => {
-    const supabase = await createClient();
-    const { data:achievements,error } = await supabase
-                                .from("certifications")
-                                .select("*");
+const Achievement = () => {
     return (
         <Card>
-            <AchievementContent achievements={achievements ?? []}/>
+            <Suspense fallback={<AchievementSkeleton/>}>
+                <AchievementContent/>
+            </Suspense>
         </Card>
     )
 }

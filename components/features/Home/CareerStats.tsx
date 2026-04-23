@@ -2,13 +2,34 @@
 import CountUp from "react-countup";
 import Icon from "@/components/reusable/Icon";
 import { Award, ChartSpline, Clock, Code, Folder } from "lucide-react";
+import { supabase } from "@/supabase/client";
+import React from "react";
+import CareerSkeleton from "@/components/skeleton/CareerSkeleton";
 
-type CareerStatsProps = {
-    projectCount: number
-    certCount: number
-}
+const CareerStats = () => {
+    const [loading,setLoading] = React.useState<boolean>(false);
+    const [projectCount,setProjectCount] = React.useState<number>();
+    const [certCount,setCertCount] = React.useState<number>();
 
-const CareerStats = ({projectCount,certCount}:CareerStatsProps) => {
+    React.useEffect(() => {
+        const fetchData = async() => {
+            setLoading(true);
+            const { count:projectCount } = await supabase
+                                                .from("projects")
+                                                .select("*", { count: "exact", head: true });
+            const { count:certCount } = await supabase
+                                                .from("certifications")
+                                                .select("*", { count: "exact", head: true });
+            setProjectCount(projectCount ?? 0);
+            setCertCount(certCount ?? 0);
+
+            setLoading(false);
+        }
+        fetchData();
+    }, [])
+
+    if (loading) return <CareerSkeleton/>
+
     return (
         <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
@@ -31,7 +52,7 @@ const CareerStats = ({projectCount,certCount}:CareerStatsProps) => {
                         <Icon number={2}>
                             <Award size={24}/>
                         </Icon>
-                        <CountUp start={0} end={certCount} duration={2.5} className="text-4xl font-bold"/>
+                        <CountUp start={0} end={certCount ?? 0} duration={2.5} className="text-4xl font-bold"/>
                     </div>
                     <p className="text-sm font-semibold mt-auto">Certificates</p>
                 </div>
@@ -40,7 +61,7 @@ const CareerStats = ({projectCount,certCount}:CareerStatsProps) => {
                         <Icon number={3}>
                             <Folder size={24}/>
                         </Icon>
-                        <CountUp start={0} end={projectCount} duration={2.5} className="text-4xl font-bold"/>
+                        <CountUp start={0} end={projectCount ?? 0} duration={2.5} className="text-4xl font-bold"/>
                     </div>
                     <p className="text-sm font-semibold mt-auto">Projects</p>
                 </div>

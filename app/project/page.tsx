@@ -1,22 +1,20 @@
 import { Metadata } from "next";
 import ProjectContent from "@/components/features/Project/ProjectContent";
 import Card from "@/components/reusable/Card";
-import { createClient } from "@/supabase/server";
+import { Suspense } from "react";
+import ProjectAllSkeleton from "@/components/skeleton/ProjectAllSkeleton";
 
 export const metadata: Metadata = {
     title: "Zach Estrella | Projects",
     description: "Project section of Zach's Portfolio",
 }; 
 
-export const revalidate = 300;
-
-const Project = async() => {
-    const supabase = await createClient();
-    const { data:projects } = await supabase.from("projects").select("*").order("created_at",{ascending:false});
-
+const Project = async() => {[]
     return (
         <Card>
-            <ProjectContent projects={projects ?? []}/>
+            <Suspense fallback={<ProjectAllSkeleton/>}>
+                <ProjectContent/>
+            </Suspense>
         </Card>
     )
 }

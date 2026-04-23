@@ -1,24 +1,10 @@
 import Link from "next/link";
 import { formatDate } from "@/utils/helper";
 import { Book, Folder } from "lucide-react";
+import { fetchAllProjects } from "@/app/project/actions";
 
-type ProjectProps = {
-    projects: {
-        id: number
-        slug: string
-        name: string
-        description: string
-        tags: {
-            tag: string
-        }[]
-        images: {
-            url: string
-        }[]
-        developed_at: string
-    }[]
-}
-
-const ProjectContent = ({projects}:ProjectProps) => {
+const ProjectContent = async() => {
+    const projects = await fetchAllProjects();
     return (
         <div className="w-full flex flex-col gap-3">
             <div className="flex items-center gap-2">

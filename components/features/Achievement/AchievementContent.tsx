@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Button from "@/components/reusable/Button";
-import { CertificateProps } from "../About/Certificate";
 import { formatDate } from "@/utils/helper";
 import { Award, Calendar, ExternalLink } from "lucide-react";
+import { fetchAllCertificates } from "@/app/achievement/actions";
 
-const AchievementContent = ({achievements}:{achievements:CertificateProps[]}) => {
+const AchievementContent = async() => {
+    const achievements = await fetchAllCertificates();
+
     return (
         <div className="w-full flex flex-col gap-3">
             <div className="flex items-center gap-2">

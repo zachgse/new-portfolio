@@ -1,20 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 import Button from "@/components/reusable/Button";
 import { formatDate } from "@/utils/helper";
 import { Award, Calendar, ExternalLink } from "lucide-react";
+import { fetchLimitCertificates } from "@/app/achievement/actions";
 
-export type CertificateProps = {
-    id: number
-    title: string
-    issuer: string
-    url: string
-    icon: string
-    image: string
-    achieved_at: string
-}
-
-const Certificate = ({certificates}:{certificates:CertificateProps[]}) => {
+const Certificate = async() => {
+    const certificates = await fetchLimitCertificates();
     return (
         <div className="w-full flex flex-col gap-3">
             <div className="flex items-center gap-2">
@@ -44,7 +35,6 @@ const Certificate = ({certificates}:{certificates:CertificateProps[]}) => {
                     </a>
                 </div>
                 ))}
-
 
                 <Link href="/achievement" className="text-center text-info cursor-pointer text-sm hover:underline flex items-center justify-center gap-1">
                     <ExternalLink size={16}/>

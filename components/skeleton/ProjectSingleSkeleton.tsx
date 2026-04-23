@@ -1,9 +1,6 @@
-import Card from "@/components/reusable/Card";
-
-const Loading = () => {
+const ProjectSingleSkeleton = () => {
     return (
-        <Card
-         className="w-full flex flex-col gap-3">
+        <>
             <div className="bg-[#f2f1f6] dark:bg-[#313131] rounded-lg w-8 h-8"/>
             <div className="bg-[#f2f1f6] dark:bg-[#313131] rounded-lg w-40 h-8"/>
             <div className="flex flex-wrap gap-2">
@@ -14,8 +11,8 @@ const Loading = () => {
             <div className="bg-[#f2f1f6] dark:bg-[#313131] rounded-lg w-full h-40"/>
             <div className="bg-[#f2f1f6] dark:bg-[#313131] rounded-lg w-40 h-12"/>
             <div className="bg-[#f2f1f6] dark:bg-[#313131] rounded-lg w-full h-80"/>
-        </Card>
+        </>
     )
 }
 
-export default Loading;
+export default ProjectSingleSkeleton;

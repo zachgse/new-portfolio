@@ -1,9 +1,5 @@
-import Card from "@/components/reusable/Card";
-
-const Loading = () => {
-    return (
-        <Card>
-            <div className="w-full flex flex-col gap-3">
+const AchievementSkeleton = () => {
+    return  <div className="w-full flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                     <div className="bg-[#f2f1f6] dark:bg-[#313131] rounded-lg w-40 h-8"/>
                 </div>
@@ -13,8 +9,6 @@ const Loading = () => {
                     ))}
                 </div>
             </div>
-        </Card>
-    )
 }
 
-export default Loading;
+export default AchievementSkeleton;
