@@ -19,7 +19,6 @@ type ProjectProps = {
 }
 
 const ProjectContent = ({projects}:ProjectProps) => {
-
     return (
         <div className="w-full flex flex-col gap-3">
             <div className="flex items-center gap-2">
