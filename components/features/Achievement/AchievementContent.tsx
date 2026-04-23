@@ -11,11 +11,12 @@ const AchievementContent = ({achievements}:{achievements:CertificateProps[]}) =>
                 <Award size={20}/>
                 <p className="font-bold text-2xl">Licenses & Certifications</p>
             </div>
+            
             <div className="grid md:grid-cols-4 grid-cols-2 gap-8">
                 {achievements.map((achievement) => (
                     <div key={achievement.id} className="lg:col-span-1 md:col-span-2 col-span-4 flex flex-col gap-2 text-center group">
-                        <div className="border border-gray-300 relative overflow-hidden">
-                            <img src={achievement.image} alt={`${achievement.title} certificate preview`} className="w-full h-60"/>
+                        <div className="border border-gray-300 dark:border-[#212121] relative overflow-hidden rounded-lg">
+                            <img src={achievement.image} alt={`${achievement.title} certificate preview`} className="w-full h-60 rounded-lg"/>
 
                             <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <div className="relative bottom-8 flex items-center justify-center text-white px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
