@@ -5,6 +5,8 @@ import { Award, Calendar, ExternalLink } from "lucide-react";
 import { cachedFetch } from "@/supabase/custom";
 import { CertificationType } from "@/utils/types";
 
+export const dynamic = 'force-dynamic';
+
 const AchievementContent = async() => {
     const achievements = await cachedFetch("certifications");
 
