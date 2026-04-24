@@ -17,7 +17,8 @@ const Sidebar = () => {
             <div className="w-32 h-32 overflow-hidden rounded-full mx-auto">
                 <Image src={GradPic}
                     alt="Zach Estrella"
-                    className="w-full h-full object-cover object-top scale-120 origin-top"/>
+                    className="w-full h-full object-cover object-top scale-120 origin-top"
+                    loading="eager"/>
             </div>
             <div className="text-center">
                 <p className="font-bold text-center text-2xl">Zach Estrella</p>

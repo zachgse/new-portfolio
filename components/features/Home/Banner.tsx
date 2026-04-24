@@ -1,6 +1,8 @@
 "use client"
 import { Typewriter } from 'react-simple-typewriter'
 import { Calendar } from 'lucide-react'
+import BannerImg from "@/public/assets/img/banner.jpg";
+import Image from 'next/image';
 
 const Banner = () => {
     const date = new Date();
@@ -12,7 +14,7 @@ const Banner = () => {
                 <Calendar size={16}/>
                 {formatted}
             </div>
-            <img src="../assets/img/banner.jpg" alt="Banner" className="w-full h-60 object-cover rounded-lg"/>
+            <Image src={BannerImg} alt="Banner Image" className='w-full h-60 object-cover rounded-lg' priority/>
             <div className="absolute bottom-4 left-4">
                 <p className="text-white mt-auto lg:text-3xl text-xl">
                     <Typewriter
